@@ -5,6 +5,8 @@ set -euo pipefail
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin/:$PATH"
 
+exclude_frameworks=("PINCache" "PINOperation" "PINRemoteImage" "Pods_$PROJECT")
+
 function archive() {
     xcodebuild archive \
     -workspace $PROJECT.xcworkspace \
@@ -29,6 +31,11 @@ function create_xcframework() {
     do
         basename=$(basename $framework)
         framework_name=$(basename $framework .framework)
+
+        if [[ " ${exclude_frameworks[*]} " =~ " ${framework_name} "  ]]; then
+            continue
+        fi
+
         xcodebuild -create-xcframework \
             -framework $SRCROOT/$PROJECT-iphonesimulator.xcarchive/Products/Library/Frameworks/$basename \
             -framework $SRCROOT/$PROJECT-iphoneos.xcarchive/Products/Library/Frameworks/$basename \
