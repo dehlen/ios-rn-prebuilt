@@ -5,7 +5,7 @@ set -euo pipefail
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin/:$PATH"
 
-exclude_frameworks=("PINCache" "PINOperation" "PINRemoteImage" "Pods_$PROJECT")
+exclude_frameworks=("PINCache" "PINOperation" "PINRemoteImage" "Pods_ios_rn_prebuilt" "ios_rn_prebuilt")
 
 function archive() {
     xcodebuild archive \
