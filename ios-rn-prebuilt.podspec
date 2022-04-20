@@ -19,4 +19,9 @@ Pod::Spec.new do |s|
   s.libraries              = 'stdc++'
   s.vendored_frameworks    = '**/*.xcframework'
   s.resources              = '**/*.bundle'
+
+  # Excluded dependencies
+  s.dependency               'PINCache'
+  s.dependency               'PINRemoteImage'
+  s.dependency               'PINOperation'
 end
