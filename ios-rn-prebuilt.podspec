@@ -1,6 +1,6 @@
 # This version is used in build_xcframwork.sh. So the format will have to be:
 # version<space>=<space>doublequote<version_number>doublequote
-version = "1.0.2" 
+version = "1.0.3" 
 source = "https://github.com/traveloka/ios-rn-prebuilt/releases/download/#{version}/ios-rn-prebuilt.tar.gz"
 
 Pod::Spec.new do |s|
