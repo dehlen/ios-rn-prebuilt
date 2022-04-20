@@ -27,6 +27,7 @@ function create_xcframework() {
     rm -rf $SRCROOT/Frameworks
     mkdir $SRCROOT/Frameworks
 
+    # Find frameworks
     for framework in $(find $SRCROOT/$PROJECT-iphonesimulator.xcarchive/Products/Library/Frameworks -type d -name "*.framework");
     do
         basename=$(basename $framework)
@@ -40,6 +41,12 @@ function create_xcframework() {
             -framework $SRCROOT/$PROJECT-iphonesimulator.xcarchive/Products/Library/Frameworks/$basename \
             -framework $SRCROOT/$PROJECT-iphoneos.xcarchive/Products/Library/Frameworks/$basename \
             -output $SRCROOT/Frameworks/$framework_name.xcframework
+    done
+
+    # Find bundle resources
+    for resources in $(find $BUILT_PRODUCTS_DIR/../.. -type d -name "*.bundle");
+    do  
+        cp -R $resources $SRCROOT/Frameworks/
     done
 
     tar -cvzf $PROJECT.tar.gz Frameworks

@@ -18,4 +18,5 @@ Pod::Spec.new do |s|
   s.framework              = "JavaScriptCore", "AudioToolbox"
   s.libraries              = 'stdc++'
   s.vendored_frameworks    = '**/*.xcframework'
+  s.resources              = '**/*.bundle'
 end
