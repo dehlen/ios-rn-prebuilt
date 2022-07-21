@@ -29,6 +29,10 @@ brew install cocoapods
 
 ## Creating XCFrameworks
 
+In order for the script to finish successfully you need to login into your GitHub account first via `gh auth login`.
+You also need write permissions to this repository. Otherwise the script will fail distributing the prebuilt libraries.
+However the built version will still be available in the project root directory as  `ios-rn-prebuilt.tar.gz`.
+
 ### Step 1: Set correct NODE_BINARY environment variable
 Open .xcode.env from the root project directory and set the correct value for NODE_BINARY.
 
@@ -43,3 +47,7 @@ Each new distribution will need to bump the project version. You can do this by 
 
 ### Step 5: Building the XCFrameworks and Distribute
 Open `ios-rn-prebuilt.xcworkspace` and run `build-all-xcframework` scheme. It will create XCFrameworks, create releases and upload the `ios-rn-prebuilt.tar.gz` into this repository.
+
+## Updating React-Native
+
+For every react-native release the changelog and upgrade helper must be checked for breaking changes. However for most of the updates it should be sufficient to just update the version number in package.json.
