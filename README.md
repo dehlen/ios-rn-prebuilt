@@ -87,11 +87,10 @@ Open `IntegrationTest/ios/ios.xcworkspace` and run the application. You should s
 ## Release Plan
 
 We're using release branches `releases/[react_native_version]` to track the official release of React Native.
+A new version of this xcframework is build via GitHub workflows on every push on such a branch (releases/<any_name>).
+For this to work the repository needs to set a couple of secrets.
 
 (working in progress)
-
-A new version of this xcframework is build via GitHub workflows on every push.
-
 
 ## License
 
