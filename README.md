@@ -1,53 +1,88 @@
-# ios-rn-prebuilt
-iOS RN Prebuilt is a prebuilt xcframeworks that contains **public repositories of React Native and 3rd party libraries**.
-The benefit of using prebuilt xcframeworks are:
-- Reduced build time. Each time we do clean build in the project, it won't rebuild the React Native libraries.
-- Easier integration for external build system such as `Bazel` or `Buck`. Each library updates will also be easier because we only need to import the xcframework instead of creating rules to compile the source codes.
+# ReactNative-Binary
 
-# Getting Started
+Pre-built React Native xcframeworks to save the time of humans.
 
-## Installing Required Tools
-This project uses brew, GitHub CLI, and CocoaPods to distribute the prebuilt libraries.
+Features:
 
-### Step 1: Installing Brew
-Run this command on your terminal
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+- iOS and Mac Catalyst are both supported with xcframeworks.
+- Easy integration without messy Podfile.
 
-### Step 2: Installing GitHub CLI
-Run this command on your terminal
-```
-brew install gh
-```
+Inspired by <https://github.com/traveloka/ios-rn-prebuilt>.
 
-### Step 3: Installing CocoaPods
-Run this command on your terminal
-```
-brew install cocoapods
+## Get Started
+
+### Installation
+
+#### CocoaPods
+
+```rb
+pod 'ReactNative-Binary', configuration: 'Release'
+pod 'ReactNative-Binary-Debug', configuration: 'Debug' # loading debug support
 ```
 
-## Creating XCFrameworks
+#### Swift Package
 
-In order for the script to finish successfully you need to login into your GitHub account first via `gh auth login`.
-You also need write permissions to this repository. Otherwise the script will fail distributing the prebuilt libraries.
-However the built version will still be available in the project root directory as  `ios-rn-prebuilt.tar.gz`.
+(working in progress)
 
-### Step 1: Set correct NODE_BINARY environment variable
-Open .xcode.env from the root project directory and set the correct value for NODE_BINARY.
+### Code Snippet
 
-### Step 2: Download node_modules
-In the root project directory, run `npm install` to install the required node_modules (React-Native).
+```swift
+import React
+import UIKit
 
-### Step 3: Integrate the Libraries
-In the root project directory, run `pod install` to install and integrate the libraries into the project.
+public class ReactNativeBaseVC: UIViewController {
+  private enum Constants {
+    static let moduleName = "[ModuleName]"
+  }
 
-### Step 4: Bump Version
-Each new distribution will need to bump the project version. You can do this by changing the `version` variable in `ios-rn-prebuild.podspec`
+  private lazy var rootView: UIView = RCTAppSetupDefaultRootView(self.bridge, Constants.moduleName, [:])
+  private lazy var bridge = RCTBridge(delegate: self, launchOptions: [:])
 
-### Step 5: Building the XCFrameworks and Distribute
-Open `ios-rn-prebuilt.xcworkspace` and run `build-all-xcframework` scheme. It will create XCFrameworks, create releases and upload the `ios-rn-prebuilt.tar.gz` into this repository.
+  public init() {
+    super.init(nibName: nil, bundle: nil)
+  }
 
-## Updating React-Native
+  override public func viewDidLoad() {
+    super.viewDidLoad()
 
-For every react-native release the changelog and upgrade helper must be checked for breaking changes. However for most of the updates it should be sufficient to just update the version number in package.json.
+    rootView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(rootView)
+
+    NSLayoutConstraint.activate([
+      rootView.topAnchor.constraint(equalTo: view.topAnchor),
+      rootView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      rootView.leftAnchor.constraint(equalTo: view.leftAnchor),
+      rootView.rightAnchor.constraint(equalTo: view.rightAnchor),
+    ])
+  }
+}
+
+extension ReactNativeBaseVC: RCTBridgeDelegate {
+  public func sourceURL(for _: RCTBridge!) -> URL! {
+    URL(string: "http://localhost:8081/index.bundle?platform=ios")! // or your local JavaScript bundle file
+  }
+
+  public func extraModules(for _: RCTBridge!) -> [RCTBridgeModule]! {
+    [
+      RCTDevSettings(),
+      RCTAsyncLocalStorage(),
+      RCTRedBox(),
+    ]
+  }
+}
+
+
+```
+
+## Development
+
+## Release Plan
+
+We're using release branches `releases/[react_native_version]` to track the official release of React Native.
+
+(working in progress)
+
+
+## License
+
+MIT

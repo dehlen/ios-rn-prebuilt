@@ -1,0 +1,20 @@
+name: DummyApp
+# include:
+#   - base_spec.yml
+options:
+  bundleIdPrefix: com.my.dummy.app
+targets:
+  DummyApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources: [DummyApp]
+    configFiles:
+      Debug: xcconfig/DummyApp.debug.xcconfig
+      Release: xcconfig/DummyApp.release.xcconfig
+    # settings:
+    #   configs:
+    #     debug:
+    #       CUSTOM_BUILD_SETTING: my_debug_value
+    #     release:
+    #       CUSTOM_BUILD_SETTING: my_release_value
