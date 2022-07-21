@@ -1,10 +1,3 @@
-//
-//  ios_rn_prebuilt.h
-//  ios-rn-prebuilt
-//
-//  Created by M1 Testing on 19/04/22.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for ios_rn_prebuilt.

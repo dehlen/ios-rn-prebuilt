@@ -29,11 +29,17 @@ brew install cocoapods
 
 ## Creating XCFrameworks
 
-### Step 1: Integrate the Libraries
+### Step 1: Set correct NODE_BINARY environment variable
+Open .xcode.env from the root project directory and set the correct value for NODE_BINARY.
+
+### Step 2: Download node_modules
+In the root project directory, run `npm install` to install the required node_modules (React-Native).
+
+### Step 3: Integrate the Libraries
 In the root project directory, run `pod install` to install and integrate the libraries into the project.
 
-### Step 2: Bump Version
+### Step 4: Bump Version
 Each new distribution will need to bump the project version. You can do this by changing the `version` variable in `ios-rn-prebuild.podspec`
 
-### Step 3: Building the XCFrameworks and Distribute
+### Step 5: Building the XCFrameworks and Distribute
 Open `ios-rn-prebuilt.xcworkspace` and run `build-all-xcframework` scheme. It will create XCFrameworks, create releases and upload the `ios-rn-prebuilt.tar.gz` into this repository.

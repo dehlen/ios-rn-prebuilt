@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:dehlen/ios-rn-prebuilt.git"
+  },
+  "author": "David v.Knobelsdorff",
+  "devDependencies": {
+    "react-native": "0.69.2"
+  }
+}

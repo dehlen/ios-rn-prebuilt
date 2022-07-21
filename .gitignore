@@ -7,3 +7,7 @@ Pods/
 *.xcworkspace/xcuserdata/*
 *.xcodeproj/*.xcworkspace/xcuserdata/*
 *.xcodeproj/xcuserdata/*
+
+build
+ios-rn-prebuilt.tar.gz
+node_modules
