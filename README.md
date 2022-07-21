@@ -1,4 +1,4 @@
-# ReactNative-Binary
+# RNPrebuilt
 
 Pre-built React Native xcframeworks to save the time of humans.
 
@@ -16,8 +16,8 @@ Inspired by <https://github.com/traveloka/ios-rn-prebuilt>.
 #### CocoaPods
 
 ```rb
-pod 'ReactNative-Binary', configuration: 'Release'
-pod 'ReactNative-Binary-Debug', configuration: 'Debug' # loading debug support
+pod 'RNPrebuilt', configuration: 'Release'
+pod 'RNPrebuilt-Debug', configuration: 'Debug' # loading debug support
 ```
 
 #### Swift Package

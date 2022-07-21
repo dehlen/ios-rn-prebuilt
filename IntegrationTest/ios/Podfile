@@ -6,6 +6,6 @@ target 'ios' do
   use_frameworks!
 
   # Pods for ios
-  pod 'ReactNative-Binary', configuration: 'Release'
-  pod 'ReactNative-Binary-Debug', configuration: 'Debug' # loading debug support
+  pod 'RNPrebuilt', configuration: 'Release'
+  pod 'RNPrebuilt-Debug', configuration: 'Debug' # loading debug support
 end

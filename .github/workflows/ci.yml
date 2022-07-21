@@ -21,8 +21,8 @@ jobs:
       - name: Upload to artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ReactNative-binary-Debug
-          path: ReactNative-binary-Debug.tar.gz
+          name: RNPrebuilt-Debug
+          path: RNPrebuilt-Debug.tar.gz
 
   build-release:
     name: "[Release] Build"
@@ -37,8 +37,8 @@ jobs:
       - name: Upload to artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ReactNative-binary-Debug
-          path: ReactNative-binary-Release.tar.gz
+          name: RNPrebuilt-Debug
+          path: RNPrebuilt-Release.tar.gz
 
   validate-archives:
     name: "Validate archives from both Debug and Release"
@@ -53,17 +53,17 @@ jobs:
       - uses: actions/download-artifact@v3
         name: "Download Debug archive"
         with:
-          name: "ReactNative-binary-Debug"
-          path: ./ReactNative-binary-Debug.tar.gz
+          name: "RNPrebuilt-Debug"
+          path: ./RNPrebuilt-Debug.tar.gz
 
       - uses: actions/download-artifact@v3
         name: "Download Release archive"
         with:
-          name: "ReactNative-binary-Release"
-          path: ./ReactNative-binary-Release.tar.gz
+          name: "RNPrebuilt-Release"
+          path: ./RNPrebuilt-Release.tar.gz
 
       - name: "Validate archive sizes"
         shell: bash
         run: |
-          make FILE_PATH=./ReactNative-binary-Debug.tar.gz validate-archive
-          make FILE_PATH=./ReactNative-binary-Release.tar.gz validate-archive
+          make FILE_PATH=./RNPrebuilt-Debug.tar.gz validate-archive
+          make FILE_PATH=./RNPrebuilt-Release.tar.gz validate-archive

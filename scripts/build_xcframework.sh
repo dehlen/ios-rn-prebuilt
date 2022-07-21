@@ -82,7 +82,7 @@ function create_xcframework() {
 
   cp README.md Frameworks/
   cp LICENSE Frameworks/
-  tar -cvzf ReactNative-binary-"$CONFIGURATION".tar.gz Frameworks
+  tar -cvzf RNPrebuilt-"$CONFIGURATION".tar.gz Frameworks
 }
 
 function clean() {

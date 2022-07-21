@@ -5,14 +5,14 @@ function prepare_release() {
   version_tag="v$1"
   configuration="$2"
   repo_name="dehlen/ios-rn-prebuilt"
-  archive_name="ReactNative-Binary-$version_tag-$configuration.tar.gz"
+  archive_name="RNPrebuilt-$version_tag-$configuration.tar.gz"
 
   if [ "$configuration" == "Release" ]; then
-    cp ReactNative-Binary.podspec ReactNative-Binary-Debug.podspec
+    cp RNPrebuilt.podspec RNPrebuilt-Debug.podspec
     gh release create "$version_tag" --generate-notes -R $repo_name
   fi
 
-  mv "ReactNative-binary-$configuration".tar.gz "$archive_name"
+  mv "RNPrebuilt-$configuration".tar.gz "$archive_name"
 
   echo "Files:"
   ls -lh
@@ -22,11 +22,11 @@ function prepare_release() {
   ls -lh
 
   if [ "$configuration" == "Debug" ]; then
-    spec_file_name="ReactNative-Binary-Debug.podspec"
+    spec_file_name="RNPrebuilt-Debug.podspec"
 
-    sed -i '' "s/'ReactNative-Binary'/'ReactNative-Binary-Debug'/g" "$spec_file_name" || exit 1
+    sed -i '' "s/'RNPrebuilt'/'RNPrebuilt-Debug'/g" "$spec_file_name" || exit 1
   else
-    spec_file_name="ReactNative-Binary.podspec"
+    spec_file_name="RNPrebuilt.podspec"
   fi
 
   sed -i '' "s/version = '[^']*'/version = '$1'/g" "$spec_file_name" || exit 1
