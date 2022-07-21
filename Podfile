@@ -17,6 +17,7 @@ target 'DummyApp' do
 
   # NOTE:
   # We could add third-party RN dependencies here as well (like RN Gesture Handler)
+  # https://github.com/imWildCat/ReactNativeAppleBinaryFramework/issues/15
 
   current_path = Dir.pwd
 
