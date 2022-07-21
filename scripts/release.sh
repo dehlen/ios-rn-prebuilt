@@ -4,7 +4,7 @@
 function prepare_release() {
   version_tag="v$1"
   configuration="$2"
-  repo_name="imWildCat/ReactNativeAppleBinaryFramework"
+  repo_name="dehlen/ios-rn-prebuilt"
   archive_name="ReactNative-Binary-$version_tag-$configuration.tar.gz"
 
   if [ "$configuration" == "Release" ]; then
