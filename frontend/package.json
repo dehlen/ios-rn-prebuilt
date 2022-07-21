@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "yarn react-native start"
+  },
   "dependencies": {
+    "react": "18.0.0",
     "react-native": "0.69.1"
   }
 }

@@ -38,10 +38,6 @@ public class ReactNativeBaseVC: UIViewController {
   private lazy var rootView: UIView = RCTAppSetupDefaultRootView(self.bridge, Constants.moduleName, [:])
   private lazy var bridge = RCTBridge(delegate: self, launchOptions: [:])
 
-  public init() {
-    super.init(nibName: nil, bundle: nil)
-  }
-
   override public func viewDidLoad() {
     super.viewDidLoad()
 
@@ -76,11 +72,25 @@ extension ReactNativeBaseVC: RCTBridgeDelegate {
 
 ## Development
 
+## Integration Test
+There is a sample app to test integrating the resulting xcframework in an app. 
+
+### Start Metro Bundler
+Start the metro bundler via `cd frontend && yarn start`
+
+### Install Cocoapods
+Run `cd IntegrationTest/ios && pod install` to install the xcframework. In the future a SPM version will be available too.
+
+### Run app
+Open `IntegrationTest/ios/ios.xcworkspace` and run the application. You should see a debug RN screen.
+
 ## Release Plan
 
 We're using release branches `releases/[react_native_version]` to track the official release of React Native.
 
 (working in progress)
+
+A new version of this xcframework is build via GitHub workflows on every push.
 
 
 ## License
