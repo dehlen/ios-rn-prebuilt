@@ -17,12 +17,13 @@ Inspired by <https://github.com/traveloka/ios-rn-prebuilt>.
 
 ```rb
 pod 'RNPrebuilt', configuration: 'Release'
-pod 'RNPrebuilt-Debug', configuration: 'Debug' # loading debug support
+# loading debug support with RCT-DevSettings
+pod 'RNPrebuilt-Debug', configuration: 'Debug'
 ```
 
 #### Swift Package
 
-(working in progress)
+WIP
 
 ### Code Snippet
 
@@ -30,7 +31,7 @@ pod 'RNPrebuilt-Debug', configuration: 'Debug' # loading debug support
 import React
 import UIKit
 
-public class ReactNativeBaseVC: UIViewController {
+class ReactNativeViewController: UIViewController {
   private enum Constants {
     static let moduleName = "[ModuleName]"
   }
@@ -38,7 +39,7 @@ public class ReactNativeBaseVC: UIViewController {
   private lazy var rootView: UIView = RCTAppSetupDefaultRootView(self.bridge, Constants.moduleName, [:])
   private lazy var bridge = RCTBridge(delegate: self, launchOptions: [:])
 
-  override public func viewDidLoad() {
+  override func viewDidLoad() {
     super.viewDidLoad()
 
     rootView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,16 +54,17 @@ public class ReactNativeBaseVC: UIViewController {
   }
 }
 
-extension ReactNativeBaseVC: RCTBridgeDelegate {
-  public func sourceURL(for _: RCTBridge!) -> URL! {
-    URL(string: "http://localhost:8081/index.bundle?platform=ios")! // or your local JavaScript bundle file
+extension ReactNativeViewController: RCTBridgeDelegate {
+  func sourceURL(for _: RCTBridge!) -> URL! {
+    // or your local JavaScript bundle file
+    return URL(string: "http://localhost:8081/index.bundle?platform=ios")!
   }
 
-  public func extraModules(for _: RCTBridge!) -> [RCTBridgeModule]! {
+  func extraModules(for _: RCTBridge!) -> [RCTBridgeModule]! {
     [
       RCTDevSettings(),
       RCTAsyncLocalStorage(),
-      RCTRedBox(),
+      RCTRedBox()
     ]
   }
 }
@@ -88,10 +90,7 @@ Open `IntegrationTest/ios/ios.xcworkspace` and run the application. You should s
 
 We're using release branches `releases/[react_native_version]` to track the official release of React Native.
 A new version of this xcframework is build via GitHub workflows on every push on such a branch (releases/<any_name>).
-For this to work the repository needs to set a couple of secrets.
-
-(working in progress)
+See [release.yml](./.github/workflows/release.yml) for more info.
 
 ## License
-
 MIT
