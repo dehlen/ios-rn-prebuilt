@@ -1,9 +1,9 @@
 version = '0.69.1'
 
-source = 'https://github.com/dehlen/ios-rn-prebuilt/releases/download/v0.69.1/RNPrebuilt-v0.69.1-Release.tar.gz'
+source = 'https://github.com/dehlen/ios-rn-prebuilt/releases/download/v0.69.1/RNPrebuilt-v0.69.1-Debug.tar.gz'
 
 Pod::Spec.new do |s|
-  s.name                      = 'RNPrebuilt'
+  s.name                      = 'RNPrebuilt-Debug'
   s.version                   = version.to_s
   s.summary                   = 'React Native xcframeworks'
   s.description               = <<-DESC
