@@ -12,7 +12,7 @@ target 'DummyApp' do
     path: './frontend/node_modules/react-native',
     production: false,
     fabric_enabled: false,
-    hermes_enabled: false
+    hermes_enabled: true
   )
 
   # NOTE:
