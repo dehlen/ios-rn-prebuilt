@@ -1,0 +1,24 @@
+PODS:
+  - RNPrebuilt (0.69.1):
+    - RNPrebuilt/main (= 0.69.1)
+  - RNPrebuilt-Debug (0.69.1):
+    - RNPrebuilt-Debug/main (= 0.69.1)
+  - RNPrebuilt-Debug/main (0.69.1)
+  - RNPrebuilt/main (0.69.1)
+
+DEPENDENCIES:
+  - RNPrebuilt
+  - RNPrebuilt-Debug
+
+SPEC REPOS:
+  trunk:
+    - RNPrebuilt
+    - RNPrebuilt-Debug
+
+SPEC CHECKSUMS:
+  RNPrebuilt: 1ec97ce847eea377347dd98861f1f8498878bcde
+  RNPrebuilt-Debug: a845300554f051bbe338bf77408523d077d44a19
+
+PODFILE CHECKSUM: 03c57e499ce2bd5bec46599c7b91076275a48c17
+
+COCOAPODS: 1.11.3
