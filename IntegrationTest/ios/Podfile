@@ -6,6 +6,6 @@ target 'ios' do
   use_frameworks!
 
   # Pods for ios
-  pod 'RNPrebuilt', configuration: 'Release'
-  pod 'RNPrebuilt-Debug', configuration: 'Debug' # loading debug support
+  pod 'RNPrebuilt', '0.69.1+hermesenabled', configuration: 'Release'
+  pod 'RNPrebuilt-Debug', '0.69.1+hermesenabled', configuration: 'Debug' # loading debug support
 end

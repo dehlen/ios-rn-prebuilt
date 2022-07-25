@@ -6,11 +6,13 @@ import {
   View
 } from 'react-native';
 
+
+const isHermes = () => !!global.HermesInternal;
 const WelcomeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        "Hello World from React-Native"
+        Hermes enabled: {isHermes() ? "true" : "false"}
       </Text>
     </View>
   );
