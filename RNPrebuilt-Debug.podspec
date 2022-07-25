@@ -1,9 +1,9 @@
 version = '0.69.1+hermesenabled'
 
-source = 'https://github.com/dehlen/ios-rn-prebuilt/releases/download/v0.69.1+hermesenabled/RNPrebuilt-v0.69.1+hermesenabled-Release.tar.gz'
+source = 'https://github.com/dehlen/ios-rn-prebuilt/releases/download/v0.69.1+hermesenabled/RNPrebuilt-v0.69.1+hermesenabled-Debug.tar.gz'
 
 Pod::Spec.new do |s|
-  s.name                      = 'RNPrebuilt'
+  s.name                      = 'RNPrebuilt-Debug'
   s.version                   = version.to_s
   s.summary                   = 'React Native xcframeworks'
   s.description               = <<-DESC
